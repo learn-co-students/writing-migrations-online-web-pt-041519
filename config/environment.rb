@@ -17,4 +17,12 @@ def drop_db
   DB.tables.each do |table|
     DB.execute("DROP TABLE #{table}")
   end
+  
+  sql = <<-SQL
+  CREATE TABLE IF NOT EXISTS students (
+  name STRING
+  )
+SQL
+ 
+ActiveRecord::Base.connection.execute(sql)
 end
